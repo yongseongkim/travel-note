@@ -16,7 +16,49 @@ def index():
 @app.route("/destinations")
 @cross_origin()
 def destinations():
-    return jsonify([])
+    return jsonify([
+        {
+            "id": 1,
+            "name": "example name1",
+            "description": "example description",
+            "bounds": {
+                "north": 127.115048,
+                "west": 37.508038,
+                "south": 127.115248,
+                "east": 37.508238
+            }
+        },
+
+        {
+            "id": 2,
+            "name": "example name2",
+            "description": "example description",
+            "bounds": {
+                "north": 127.115048,
+                "west": 37.508038,
+                "south": 127.115248,
+                "east": 37.508238
+            }
+        }
+    ])
+
+
+@app.route("/destinations/<string:destination_id>")
+@cross_origin()
+def destination(destination_id):
+    return jsonify(
+        {
+            "id": destination_id,
+            "name": "example name",
+            "description": "example description",
+            "bounds": {
+                "north": 127.115048,
+                "west": 37.508038,
+                "south": 127.115248,
+                "east": 37.508238
+            }
+        }
+    )
 
 
 if __name__ == "__main__":
